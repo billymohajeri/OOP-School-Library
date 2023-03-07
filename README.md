@@ -30,12 +30,10 @@ And all of this will be built in a beautiful and well-organized way!
 
 ### Tech Stack <a name="tech-stack"></a>
 
-<details>
-<summary>Client</summary>
-  <ul>
+<ul>
     <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
-  </ul>
-</details>
+</ul>
+
 
 ### Key Features <a name="key-features"></a>
 
@@ -93,7 +91,7 @@ gem install
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] ****
+- [ ] **Add basic UI**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
