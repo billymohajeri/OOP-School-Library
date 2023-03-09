@@ -24,7 +24,7 @@ def process_options(usr_inp)
   when '1'
     @app.list_all_books
   when '2'
-    puts '2'
+    @app.list_all_people
   when '3'
     puts '3'
   when '4'

@@ -22,7 +22,13 @@ class App
     end
   end
 
-  def list_all_people; end
+  def list_all_people
+    if @people.empty?
+      puts 'There is no people in the list...'
+    else
+      @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age #{person.age}" }
+    end
+  end
 
   def create_person; end
 
