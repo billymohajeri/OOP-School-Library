@@ -6,6 +6,8 @@
 #     Create a rental.
 #     List all rentals for a given person id.
 require './book'
+require './student'
+require './teacher'
 
 class App
   def initialize
@@ -30,7 +32,28 @@ class App
     end
   end
 
-  def create_person; end
+  def create_person
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    choice = gets.chomp
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp
+    case choice
+    when '1'
+      print 'Has parent permission? [Y/N]: '
+      input_permission = gets.chomp.capitalize
+      student_permission = true if input_permission == 'Y'
+      student_permission = false if input_permission == 'N'
+      @people.push(Student.new(age: age, name: name, parent_permission: student_permission, classroom: @classroom))
+
+    when '2'
+      print 'Specialization: '
+      specialization = gets.chomp
+      @people.push(Teacher.new(age: age, specialization: specialization, name: name))
+    end
+    puts 'Person created sccessfully.'
+  end
 
   def create_book
     print 'Title: '

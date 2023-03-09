@@ -26,7 +26,7 @@ def process_options(usr_inp)
   when '2'
     @app.list_all_people
   when '3'
-    puts '3'
+    @app.create_person
   when '4'
     @app.create_book
   when '5'
