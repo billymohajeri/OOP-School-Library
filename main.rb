@@ -1,10 +1,3 @@
-# In your main.rb define the entry point, this will be a method called main that is invoked at the end of your file.
-#  This method should do the following:
-#     Present the user with a list of options to perform.
-#     Lets users choose an option.
-#     If needed, ask for parameters for the option.
-#     Have a way to quit the app.
-
 require 'io/console'
 require './app'
 
@@ -30,9 +23,9 @@ def process_options(usr_inp)
   when '4'
     @app.create_book
   when '5'
-    puts '5'
+    @app.create_rental
   when '6'
-    puts '6'
+    @app.list_rentals
   else
     exit
   end

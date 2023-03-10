@@ -1,10 +1,3 @@
-# Create a app.rb file that will serve as your console app entry-point. It should have methods that do the following:
-#     List all books.
-#     List all people.
-#     Create a person (teacher or student, not a plain Person).
-#     Create a book.
-#     Create a rental.
-#     List all rentals for a given person id.
 require './book'
 require './student'
 require './teacher'
@@ -64,7 +57,33 @@ class App
     puts 'Book created successfully'
   end
 
-  def create_rental; end
+  def create_rental
+    puts 'Select a book from the following list by number'
+    @books.each_with_index { |book, index| puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}" }
+    book_id = gets.chomp.to_i
+    puts 'Select a person from the following list by number (not id)'
+    @people.each_with_index do |person, index|
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    person_id = gets.chomp.to_i
+    print 'Date: '
+    date = gets.chomp.to_s
 
-  def list_rentals; end
+    rental = Rental.new(date, @people[person_id], @books[book_id])
+    @rentals << rental
+    puts 'Rental created successfully'
+  end
+
+  def list_rentals
+    print 'ID of person: '
+    id = gets.chomp.to_i
+    puts 'Rentals: '
+    if @rentals.empty?
+      puts 'There is no rental for this person...'
+    else
+      @rentals.each do |rental|
+        puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+      end
+    end
+  end
 end
