@@ -87,6 +87,12 @@ gem install
 - Twitter: [@BillyMohajeri](https://twitter.com/BillyMohajeri)
 - LinkedIn: [@BillyMohajeri](https://www.linkedin.com/in/billymohajeri)
 
+👤 **Michael Amponsah**
+
+- GitHub: [@michaelamponsah](https://github.com/michaelamponsah)
+- Twitter: [@_mikeamponsah](https://twitter.com/_mikeamponsah)
+- LinkedIn: [michaelamponsah](https://linkedin.com/in/mikeamponsah)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
