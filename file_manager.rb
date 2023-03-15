@@ -55,4 +55,13 @@ class FileManager
       people << temp
     end
   end
+
+  def self.rentals_to_file(rentals = [])
+    rentals_obj = rentals.map do |rental|
+      { date: rental.date,
+        book: { title: rental.book.title, author: rental.book.author },
+        person: { id: rental.person.id } }
+    end
+    File.write('./data_files/rentals.json', rentals_obj.to_json)
+  end
 end
