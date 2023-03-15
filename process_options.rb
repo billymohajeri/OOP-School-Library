@@ -1,3 +1,5 @@
+require './app'
+
 def process_options(usr_inp)
   case usr_inp
   when 1
@@ -13,6 +15,6 @@ def process_options(usr_inp)
   when 6
     @app.list_rentals
   else
-    exit
+    puts "\e[31mInvalid selectin! please try again."
   end
 end

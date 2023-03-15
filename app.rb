@@ -1,6 +1,7 @@
 require './book'
 require './student'
 require './teacher'
+require './file_manager'
 
 class App
   def initialize
@@ -21,26 +22,26 @@ class App
     if @people.empty?
       puts 'There is no people in the list...'
     else
-      @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age #{person.age}" }
+      @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
     end
   end
 
   def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
-    choice = gets.chomp
+    choice = gets.chomp.to_i
     print 'Age: '
     age = gets.chomp.to_i
     print 'Name: '
     name = gets.chomp
     case choice
-    when '1'
+    when 1
       print 'Has parent permission? [Y/N]: '
       input_permission = gets.chomp.capitalize
       student_permission = true if input_permission == 'Y'
       student_permission = false if input_permission == 'N'
       @people.push(Student.new(age: age, name: name, parent_permission: student_permission, classroom: @classroom))
 
-    when '2'
+    when 2
       print 'Specialization: '
       specialization = gets.chomp
       @people.push(Teacher.new(age: age, specialization: specialization, name: name))
@@ -53,7 +54,8 @@ class App
     title = gets.chomp
     print 'Author: '
     author = gets.chomp
-    @books.push(Book.new(title, author))
+    new_book = Book.new(title, author)
+    @books.push(new_book)
     puts 'Book created successfully'
   end
 
@@ -85,5 +87,17 @@ class App
         puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
       end
     end
+  end
+
+  def save_data_to_file
+    FileManager.books_to_file(@books)
+    FileManager.people_to_file(@people)
+    FileManager.rentals_to_file(@rentals)
+  end
+
+  def load_state
+    FileManager.books_from_file(@books)
+    FileManager.people_from_file(@people)
+    FileManager.rentals_from_file(@rentals, @books, @people)
   end
 end
