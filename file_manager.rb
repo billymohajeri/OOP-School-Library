@@ -70,7 +70,7 @@ class FileManager
     read_rentals = JSON.parse(file)
     read_rentals.each do |rental|
       book = books.find { |b| b.title == rental['book']['title'] }
-      person = people.find { |p| p.id = rental['person']['id'] }
+      person = people.find { |per| per.id = rental['person']['id'] }
       rentals << person.add_rental(book, rental['date'])
     end
   end
