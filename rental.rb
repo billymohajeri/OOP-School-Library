@@ -4,7 +4,6 @@ class Rental
   def initialize(date, person, book)
     @date = date
 
-
     @book = book
     book.rental << self
 
