@@ -4,8 +4,8 @@ require './trimmer_decorator'
 require './rental'
 
 class Person < Nameable
-  attr_reader :id
-  attr_accessor :age, :name, :rental
+  attr_reader :parent_permission
+  attr_accessor :id, :age, :name, :rental
 
   def initialize(age:, name: 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
@@ -24,9 +24,8 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(rental)
-    @rental.push(rental)
-    rental.person = self
+  def add_rental(book, date)
+    Rental.new(date, self, book)
   end
 
   private

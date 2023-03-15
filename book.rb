@@ -10,7 +10,6 @@ class Book
   end
 
   def add_rental(person, date)
-    rental = Rental.new(date, person, self)
-    @rental.push(rental)
+    Rental.new(date, person, self)
   end
 end
