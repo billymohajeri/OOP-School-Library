@@ -64,4 +64,14 @@ class FileManager
     end
     File.write('./data_files/rentals.json', rentals_obj.to_json)
   end
+
+  def self.rentals_from_file(rentals, books, people)
+    file = File.read('./data_files/rentals.json')
+    read_rentals = JSON.parse(file)
+    read_rentals.each do |rental|
+      book = books.find { |b| b.title == rental['book']['title'] }
+      person = people.find { |p| p.id = rental['person']['id'] }
+      rentals << person.add_rental(book, rental['date'])
+    end
+  end
 end
